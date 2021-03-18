@@ -11,7 +11,7 @@ Uma lista sequencial estática é um objeto como descrito anteriormente, o que m
 
 ## Representação de uma lista estática
 Imagem: Lista Estática <br/>
-<p  align="center"><img src="./imgs/lista.png" width="400"><br/><br/></p>
+<img src="./imgs/lista.png" width="400"><br/><br/>
 Nessa imagem, podemos observar os elementos da lista sequencial estática, como:
 1. O próprio objeto lista (quadrado maior que engloba todos os outros);
 2. O tamanho total da lista (Tamanho Máximo) de 8 elementos, ou seja, apenas 8 elementos podem ser adicionados na lista ao total.
