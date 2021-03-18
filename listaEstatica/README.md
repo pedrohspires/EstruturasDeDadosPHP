@@ -11,7 +11,7 @@ Uma lista sequencial estática é um objeto como descrito anteriormente, o que m
 
 ## Representação de uma lista estática
 Imagem: <br/>
-![Lista Estática](https://github.com/pedrohspires/Estruturas_de_Dados_PHP/blob/main/listaEstatica/imgs/lista.png)<br/>
+<img src="https://github.com/pedrohspires/Estruturas_de_Dados_PHP/blob/main/listaEstatica/imgs/lista.png" width="48">
 
 
 
