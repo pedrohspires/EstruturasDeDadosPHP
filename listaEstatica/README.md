@@ -10,22 +10,23 @@ Uma lista sequencial estática é um objeto como descrito anteriormente, o que m
 <br/><br/>
 
 ## Representação de uma lista estática
-Imagem: <br/>
-<img src="https://github.com/pedrohspires/Estruturas_de_Dados_PHP/blob/main/listaEstatica/imgs/lista.png" width="48">
+Imagem: Lista Estática <br/>
+<img src="./imgs/lista.png" width="400"><br/><br/>
+Nessa imagem, podemos observar os elementos da lista sequencial estática, como:
+1. O próprio objeto lista (quadrado maior que engloba todos os outros);
+2. O tamanho total da lista (Tamanho Máximo) de 8 elementos, ou seja, apenas 8 elementos podem ser adicionados na lista ao total.
+3. A quantidade de elementos (Quantidade) dentro da lista. Como o PHP utiliza o zero como início de um vetor, a variável "Quantidade" é usada também para indicar o próximo local vazio na lista. Quando "Quantidade" é igual a "Tamanho Máximo", indica que não pode ser adicionado mais elementos.
+4. E o vetor de dados (Dados) em si, com um "X" nas posições já ocupadas. Este vetor pode ser de qualquer tipo básico do PHP (int, bool, etc), ou de objetos, como usado na lista desse repositório.
+<br/><br/>
 
-
-
-Essa lista é feita com um vetor, diferentemente da lista encadeada, onde cada objeto aponta para o próximo objeto da lista. Na lista simples, temos que definir um tamanho máximopara o vetor, não podendo adicionar mais elementos além do tamanho máximo.</p>
-Nesse repositório, o tamanho máximo está definido no arquivo "lista.php", através da função "define("tamanhoMaximo", 50)", em que o tamanho máximo da lista está definido como 50 elementos.</p>
-A lista em questão guarda nomes e idades de pessoas, apenas. Para adicionar mais dados ou dados diferentes, é necessário mudar as funções da lista.</br>
-Para saber como criar sua lista sequencial estática, consulte a playlist "Estruturas de dados descomplicada" do Dr. André Backes, do canal "Linguagem C Programação Descomplicada" no YouTube.</br>
-Os dados utilizados em minha lista e nos vídeos do Dr. Backes são meramentes ilustrativos, ou seja, os dados podem mudar, mas a ideia de lista estática e suas funções são sempre as mesmas.
-No arquivo "lista.php" também estão funções básicas de uma lista, como:
-* Função para excluir a lista
-* Funções de verificações na lista, como se está vazia ou cheia.
-* Funções de consultas, como a quantidade de elementos na lista e consultar um índice através de um nome.
-* Funções de inserção de dados: no início, final e no meio de uma lista
-* Funções de remoção de dados: no início, final e no meio de uma lista
+## Funções básicas de uma lista
+* Criar a lista. Neste exemplo, não fiz essa função, pois o próprio construtor do objeto faz esse papel;
+* Excluir: remove a lista da memória;
+* Verificações: se a lista está vazia ou cheia;
+* Consultas: quantidade de objetos na lista e, para esse exemplo, uma busca pelo índice de um nome.
+* Inserções: inserir dado no início, meio e fim da lista;
+* Remoções: remover dado do início, meio e fim da lista;
+* Imprimir cada elemento da lista.
 
 ### Como rodar os códigos no seu PC com Linux.
 Os códigos foram desenvolvidos na versão 8.0.3 do PHP. Não é necessário ser a versão exata, mas pode ocorrer alguns problemas com funções em versões muito anteriores</br>
