@@ -1,6 +1,5 @@
 # Lista simples ou lista sequencial estática
-## Autor: Pedro Henrique
-Email: pedropires2603@gmail.com
+### Autor: Pedro Henrique <\br>Email: pedropires2603@gmail.com
 
 Essa lista é feita com um vetor, diferentemente da lista encadeada, onde cada objeto aponta para o próximo objeto da lista. Na lista simples, temos que definir um tamanho máximopara o vetor, não podendo adicionar mais elementos além do tamanho máximo.</p>
 Nesse repositório, o tamanho máximo está definido no arquivo "lista.php", através da função "define("tamanhoMaximo", 50)", em que o tamanho máximo da lista está definido como 50 elementos.</p>
