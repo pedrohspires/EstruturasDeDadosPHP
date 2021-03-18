@@ -1,5 +1,18 @@
 # Lista simples ou lista sequencial estática
-### Autor: Pedro Henrique <br/>Email: pedropires2603@gmail.com
+### Autor: Pedro Henrique S. Pires <br/>Email: pedropires2603@gmail.com
+<br/>
+
+## Conceito de uma lista sequencial estática
+Básicamente, uma lista é um objeto que consegue guardar, literalmente,
+uma lista de outros objetos.<br/>
+Como exemplo, a lista do repositório é composta pelos dados de uma pessoa, que são: nome e idade. A lista é bem simples, pois foi feita para fins de atestar conhecimentos, mas pode ser ampliada para guardar endereço, número de celular, trabalho, formações, cpf e quaisquer outros dados relacionados a uma pessoa.<br/>
+Uma lista sequencial estática é um objeto como descrito anteriormente, o que muda entre as listas é como ela armazena e trata destes elementos. A lista em questão, armazena seus dados em um vetor e tem um tamanho máximo estipulado. Veja a representação da lista estática a seguir.
+<br/><br/>
+
+## Representação de uma lista estática
+Imagem: ![Lista Estática].(https://github.com/pedrohspires/Estruturas_de_Dados_PHP/blob/main/listaEstatica/imgs/lista.png)<br/>
+
+
 
 Essa lista é feita com um vetor, diferentemente da lista encadeada, onde cada objeto aponta para o próximo objeto da lista. Na lista simples, temos que definir um tamanho máximopara o vetor, não podendo adicionar mais elementos além do tamanho máximo.</p>
 Nesse repositório, o tamanho máximo está definido no arquivo "lista.php", através da função "define("tamanhoMaximo", 50)", em que o tamanho máximo da lista está definido como 50 elementos.</p>
