@@ -27,6 +27,7 @@ Nessa imagem, podemos observar os elementos da lista sequencial estática, como:
 * Inserções: inserir dado no início, meio e fim da lista;
 * Remoções: remover dado do início, meio e fim da lista;
 * Imprimir cada elemento da lista.
+<br/><br/>
 
 ### Como rodar os códigos no seu PC com Linux.
 Os códigos foram desenvolvidos na versão 8.0.3 do PHP. Não é necessário ser a versão exata, mas pode ocorrer alguns problemas com funções em versões muito anteriores</br>
