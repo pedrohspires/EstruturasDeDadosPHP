@@ -73,8 +73,10 @@
         print "Digite o nome: ";
         $nome = (string) fgets(STDIN);
         $busca = $list->retornaDado($nome);
-        if($busca == null)
-            error_log("O nome ".$nome." Não foi encontrado na lista");
+        if($busca == null){
+            removeQuebraDeLinha($nome);
+            echo ("O nome ".$nome." não foi encontrado na lista\n");
+        }
         else{
             print "Nome: ".$busca->getNome();
             print "Idade: ".$busca->getIdade()."\n";

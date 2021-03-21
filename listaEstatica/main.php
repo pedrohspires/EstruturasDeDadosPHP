@@ -26,7 +26,7 @@
     function titulo(){
         system("clear");
         print "----------------------------\n";
-        print "--------Lista ligada--------\n";
+        print "-------Lista estática-------\n";
         print "----------------------------\n\n";
     }
 
@@ -72,6 +72,7 @@
         titulo();
         print "Digite o nome: ";
         $nome = (string) fgets(STDIN);
+        removeQuebraDeLinha($nome);
         $busca = $list->retornaIndice($nome);
         if($busca == false && !is_int($busca)){ //não encontrou ou está vazia
             if($list->listaVazia()) //verifica se a lista está vazia
@@ -197,11 +198,15 @@
             if($list->removeIndice($nomeOuIndice) == false)
                 error_log("Erro ao remover o indice. Lista vazia ou indice inválido");
         }else{
-            if($list->retornaIndice($nomeOuIndice) == false)
+            if($list->retornaIndice($nomeOuIndice) == false && !is_int($list->retornaIndice($nomeOuIndice))){
                 error_log("Erro ao remover pelo nome. Nome não encontrado.");
+            }
             else
                 if($list->removeIndice($list->retornaIndice($nomeOuIndice)) == false)
                     error_log("Erro ao remover pelo nome. Lista vazia");
+            
+            print "Tecle enter para continuar.\n";
+            fgets(STDIN);
         }
     }
 

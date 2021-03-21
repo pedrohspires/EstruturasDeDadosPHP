@@ -1,5 +1,6 @@
 <?php
     require 'dados.php';
+    require '../libs/input.php';
     define("tamanhoMaximo", 50);
 
     class Lista{
@@ -47,6 +48,7 @@
             if($this->listaVazia()){
                 return false;
             }
+            removeQuebraDeLinha($nome);
             for($cont=0; $cont<$this->tamanho; $cont++){
                 if(strcmp($this->pessoa[$cont]->getNome(), $nome) == 0){
                     return $cont;
@@ -72,7 +74,7 @@
                 return false;
             }
             $cont=$this->tamanho;
-            $this->pessoa[$cont] = new Dado("", 0); // cria um objeto pessoa vazio para ser substituído na inserção
+            $this->pessoa[$cont] = new Dado("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
             while($cont>0){
                 $this->pessoa[$cont] = $this->pessoa[$cont-1];
                 $cont--;
@@ -89,7 +91,7 @@
             if($index<0 || $index>$this->tamanho)
                 return false;
             $cont = $this->tamanho;
-            $this->pessoa[$cont] = new Dado("", 0); // cria um objeto pessoa vazio para ser substituído na inserção
+            $this->pessoa[$cont] = new Dado("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
             while($cont>$index){
                 $this->pessoa[$cont] = $this->pessoa[$cont-1];
                 $cont--;

@@ -73,6 +73,7 @@
 
         // Busca e retorna o objeto Dado que corresponde ao nome buscado.
         public function retornaDado(string $nome){
+            removeQuebraDeLinha($nome);
             if($this->listaVazia())
                 return null;
             else{
@@ -127,6 +128,7 @@
 
         // Insere após um determinado dado
         public function adicionaDepois(Dado $dados, string $nome){
+            removeQuebraDeLinha($nome);
             if($this->primeiroItem() && !$this->listaVazia())
                 $this->proximo->adicionaDepois($dados, $nome);
             else{
@@ -188,6 +190,7 @@
 
         // Remove um item pelo nome
         public function removePeloNome(string $nome){
+            removeQuebraDeLinha($nome);
             if($this->primeiroItem() && !$this->proximoExiste())
                 return null;
             if($this->proximoExiste()){
