@@ -1,4 +1,4 @@
-# Lista dinamicamente ligada
+# Lista Dinamicamente Digada
 ### Autor: Pedro Henrique S. Pires <br/>Email: pedropires2603@gmail.com
 <br/>
 

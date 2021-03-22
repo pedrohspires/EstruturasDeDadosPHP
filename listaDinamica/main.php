@@ -91,7 +91,7 @@
             print "------------Inserir------------\n";
             print "1 - Inserir no final da lista\n";
             print "2 - Inserir no inicio da lista\n";
-            print "3 - Inserir após um nome ou em um indice\n";
+            print "3 - Inserir após um nome\n";
             print "Digite a opção desejada: ";
             $opcaoInserir = (int) fgets(STDIN);
             if($opcaoInserir < 1 || $opcaoInserir > 3){
@@ -141,7 +141,7 @@
             print "------------Remover------------\n";
             print "1 - Remover no final da lista\n";
             print "2 - Remover no inicio da lista\n";
-            print "3 - Remover por nome ou indice\n";
+            print "3 - Remover por nome\n";
             print "Digite a opção desejada: ";
             $opcaoInserir = (int) fgets(STDIN);
             if($opcaoInserir < 1 || $opcaoInserir > 3){
