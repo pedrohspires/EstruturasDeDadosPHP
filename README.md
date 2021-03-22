@@ -6,5 +6,6 @@ Esse repositório foi criado para fins de demonstração de conhecimento sobre e
 ## Estruturas concluídas
 1. Lista estática
 2. Lista dinâmica
+3. Lista Duplamente Encadeada
 
-Estrutura de dados em desenvolvimento atualmente: Lista Duplamente Encadeada
+Estrutura de dados em desenvolvimento atualmente: lista genérica
