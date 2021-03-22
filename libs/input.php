@@ -1,16 +1,21 @@
 <?php
     function removeQuebraDeLinha(string &$string){
-        if(isset($string)){
-            $cont=0;
-            while($string[$cont] != "\0"){
-                if($string[$cont] == "\n"){
+        if(!empty($string)){
+            $cont = 0;
+            while(1){
+                if(empty($string[$cont])){
+                    $string[$cont] = "\0";
+                    break;
+                }
+                if($string[$cont] == "\n" || $string[$cont] == "\0"){
                     $string[$cont] = "\0";
                     break;
                 }
                 $cont++;
             }
+        }else{
+            $string[0]="\0";
             return $string;
-        }else
-            error_log("input.php::removeQuebraDeLinha(): string vazia.");
+        }
     }
 ?>
