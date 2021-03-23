@@ -1,5 +1,5 @@
 <?php
-    require "./dados.php";
+    require "../dados/pessoa.php";
     /*---------------------------------------------------------------------------------------------
     / Lista Dinâmicamente Alocada
     / Autor: Pedro Henrique S. Pires 
@@ -11,7 +11,7 @@
     */
 
     class Lista{
-        private ?Dado $dados = null;
+        private ?Pessoa $dados = null;
         private ?Lista $proximo = null;
         private ?Lista $anterior = null;
 
@@ -89,7 +89,7 @@
 
         // Inserções ------------------------------------------------------------------------------
         // Insere no final
-        public function adicionaNoFinal(Dado $dado){
+        public function adicionaNoFinal(Pessoa $dado){
             if($this->listaVazia() && $this->dados == null){
                 $this->dados = $dado;
                 return $this->dados;
@@ -110,7 +110,7 @@
 
 
         // Inserir no início
-        public function adicionaNoInicio(Dado $dado){
+        public function adicionaNoInicio(Pessoa $dado){
             if($this->listaVazia()){
                 $this->dados = $dado;
                 return $this->dados;
@@ -130,7 +130,7 @@
 
 
         // Insere após um determinado dado
-        public function adicionaDepois(Dado $dado, string $nome){
+        public function adicionaDepois(Pessoa $dado, string $nome){
             removeQuebraDeLinha($nome);
             if($this->listaVazia()){
                 $this->dados = $dado;

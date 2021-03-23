@@ -1,5 +1,5 @@
 <?php
-    require "./dados.php";
+    require "../dados/pessoa.php";
     /*---------------------------------------------------------------------------------------------
     / Lista Dinâmicamente Alocada
     / Autor: Pedro Henrique S. Pires 
@@ -17,7 +17,7 @@
             // caso seja, todos os outros atributos serão "null".
             // O motivo é que para adicionar e remover no início, é necessário
             // modificar o primeiro elemento, porém não é possível reatribuir o objeto $this.
-        private ?Dado $dados = null;
+        private ?Pessoa $dados = null;
         private ?Lista $proximo = null;
 
 
@@ -71,7 +71,7 @@
         }
 
 
-        // Busca e retorna o objeto Dado que corresponde ao nome buscado.
+        // Busca e retorna o objeto Pessoa que corresponde ao nome buscado.
         public function retornaDado(string $nome){
             removeQuebraDeLinha($nome);
             if($this->listaVazia())
@@ -90,7 +90,7 @@
 
         // Inserções ------------------------------------------------------------------------------
         // Inserir no final
-        public function adicionaNoFinal(Dado $dado){
+        public function adicionaNoFinal(Pessoa $dado){
             if($this->listaVazia()){
                 $this->proximo = new Lista();
                 $this->proximo->primeiro = false;
@@ -109,7 +109,7 @@
 
 
         // Insere no início
-        public function adicionaNoInicio(Dado $dado){
+        public function adicionaNoInicio(Pessoa $dado){
             if($this->listaVazia()){
                 $this->proximo = new Lista();
                 $this->proximo->primeiro = false;
@@ -127,7 +127,7 @@
 
 
         // Insere após um determinado dado
-        public function adicionaDepois(Dado $dados, string $nome){
+        public function adicionaDepois(Pessoa $dados, string $nome){
             removeQuebraDeLinha($nome);
             if($this->primeiroItem() && !$this->listaVazia())
                 $this->proximo->adicionaDepois($dados, $nome);

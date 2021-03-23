@@ -117,13 +117,13 @@
 
     function inserirNoFinal(Lista $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoFinal(new Dado($nome, $idade)) == false)
+        if($list->adicionaNoFinal(new Pessoa($nome, $idade)) == false)
             error_log("Erro ao inserir no final da lista.");
     }
 
     function inserirNoInicio(Lista $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoInicio(new Dado($nome, $idade)) == false)
+        if($list->adicionaNoInicio(new Pessoa($nome, $idade)) == false)
             error_log("Erro ao inserir no inicio da lista.");
     }
 
@@ -131,7 +131,7 @@
         titulo();
         print "Digite o nome já existente na lista ou um indice: ";
         $nomeExistente = fgets(STDIN);
-        $list->adicionaDepois(new Dado($nome, $idade), $nomeExistente);
+        $list->adicionaDepois(new Pessoa($nome, $idade), $nomeExistente);
     }
 
 

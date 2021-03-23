@@ -1,6 +1,5 @@
 <?php
-    require 'dados.php';
-    require '../libs/input.php';
+    require '../dados/pessoa.php';
     define("tamanhoMaximo", 50);
 
     class Lista{
@@ -63,7 +62,7 @@
             if($this->listaCheia()){
                 return false;
             }
-            $this->pessoa[$this->tamanho] = new Dado($nome, $idade);
+            $this->pessoa[$this->tamanho] = new Pessoa($nome, $idade);
             $this->tamanho++;
             return true;
         }
@@ -74,12 +73,12 @@
                 return false;
             }
             $cont=$this->tamanho;
-            $this->pessoa[$cont] = new Dado("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
+            $this->pessoa[$cont] = new Pessoa("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
             while($cont>0){
                 $this->pessoa[$cont] = $this->pessoa[$cont-1];
                 $cont--;
             }
-            $this->pessoa[0] = new Dado($nome, $idade);
+            $this->pessoa[0] = new Pessoa($nome, $idade);
             $this->tamanho++;
             return true;
         }
@@ -91,12 +90,12 @@
             if($index<0 || $index>$this->tamanho)
                 return false;
             $cont = $this->tamanho;
-            $this->pessoa[$cont] = new Dado("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
+            $this->pessoa[$cont] = new Pessoa("\0", 0); // cria um objeto pessoa vazio para ser substituído na inserção
             while($cont>$index){
                 $this->pessoa[$cont] = $this->pessoa[$cont-1];
                 $cont--;
             }
-            $this->pessoa[$index] = new Dado($nome, $idade);
+            $this->pessoa[$index] = new Pessoa($nome, $idade);
             $this->tamanho++;
             return true;
         }

@@ -1,6 +1,6 @@
 <?php
     require "./lista.php";
-    require "./dados.php";
+    require "../dados/pessoa.php";
 
     // variaveis
     $lista = new Lista();
@@ -125,13 +125,13 @@
 
     function inserirNoFinal(Lista $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoFinal(new Dados($nome, $idade)) == false)
+        if($list->adicionaNoFinal(new Pessoa($nome, $idade)) == false)
             error_log("Erro ao inserir no final da lista.");
     }
 
     function inserirNoInicio(Lista $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoInicio(new Dados($nome, $idade)) == false)
+        if($list->adicionaNoInicio(new Pessoa($nome, $idade)) == false)
             error_log("Erro ao inserir no inicio da lista.");
     }
 
@@ -140,7 +140,7 @@
         print "Digite o nome já existente na lista ou um indice: ";
         $nomeExistente = fgets(STDIN);
         removeQuebraDeLinha($nomeExistente);
-        $list->adicionaDepois($nomeExistente ,new Dados($nome, $idade), 'compara');
+        $list->adicionaDepois($nomeExistente ,new Pessoa($nome, $idade), 'compara');
     }
 
 
