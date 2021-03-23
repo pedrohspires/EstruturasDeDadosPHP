@@ -7,5 +7,6 @@ Esse repositório foi criado para fins de demonstração de conhecimento sobre e
 1. Lista estática
 2. Lista dinâmica
 3. Lista Duplamente Encadeada
+4. Lista Genérica
 
-Estrutura de dados em desenvolvimento atualmente: lista genérica
+Estrutura de dados em desenvolvimento atualmente: Pilha
