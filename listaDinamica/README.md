@@ -7,7 +7,7 @@ Uma lista dinâmica é constituída por um objeto que armazena um certo tipo de 
 Da mesma maneira que a lista simples deste mesmo repositório, essa lista é composta pelos dados de uma pessoa, que são: nome e idade. A lista é bem simples, pois foi feita para fins de atestar conhecimentos, mas pode ser ampliada para guardar endereço, número de celular, trabalho, formações, cpf e quaisquer outros dados relacionados a uma pessoa.<br/>
 <br/><br/>
 
-## Representação de uma lista estática
+## Representação de uma lista dinâmica
 Imagem: Lista dinamicante ligada<br/>
 <img src="./imgs/listaDinamica.png" width="400"><br/><br/>
 Nessa imagem, podemos observar os elementos da lista dinâmica, como:
