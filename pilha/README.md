@@ -19,9 +19,9 @@ Nessa imagem, podemos observar os elementos da pilha, como:
 <br/><br/>
 
 ## Funções básicas da pilha
-* Excluir pilha: remove a lista da memória;
-* Verificações: se a lista está vazia ou cheia;
-* Consultas: quantidade de objetos na lista;
+* Excluir pilha: remove a pilha da memória;
+* Verificações: se a pilha está vazia ou cheia;
+* Consultas: quantidade de objetos na pilha;
 * push: inserir dado no topo;
 * pop: remover dado do topo;
 * Imprimir cada elemento da pilha.
