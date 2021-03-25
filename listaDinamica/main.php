@@ -78,7 +78,7 @@
             echo ("O nome ".$nome." não foi encontrado na lista\n");
         }
         else{
-            print "Nome: ".$busca->getNome();
+            print "Nome: ".$busca->getNome()."\n";
             print "Idade: ".$busca->getIdade()."\n";
         }
         print "Tecle enter para continuar.";
@@ -202,7 +202,7 @@
     function mostrarLista(Lista $list){
         system("clear");
         titulo();
-        if($list->printLista() == false)
+        if($list->printLista() == null)
             print "Lista vazia.";
         echo "Tecle enter para continuar.";
         fgets(STDIN);
