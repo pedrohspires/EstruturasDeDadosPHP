@@ -12,8 +12,7 @@ Imagem: Lista dinamicante ligada<br/>
 <img src="./imgs/listaDinamica.png" width="400"><br/><br/>
 Nessa imagem, podemos observar os elementos da lista dinâmica, como:
 1. Cada retângulo é um objeto lista e cada um aponta para o próximo objeto lista, onde a referência para o próximo objeto é representado na figura por um quadrado com a seta;<br/>
-2. O primeiro objeto lista não contém nenhum dado, pois ele é utilziado apenas para indicar o primeiro objeto. Isso é útil para as funções de remoção no início, pois não é permitido reatribuir o objeto $this.
-3. O último objeto aponta para null, indicando o fim da lista.
+2. O último objeto aponta para null, indicando o fim da lista.
 <br/><br/>
 
 ## Funções básicas de uma lista
