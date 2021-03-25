@@ -11,6 +11,4 @@ Esse repositório foi criado para fins de demonstração de conhecimento sobre e
 5. Pilha
 6. Fila
 
-Refatorando lista dinâmica antes de desenvolver a Árvore Binária.
-
 Estrutura de dados em desenvolvimento atualmente: Árvore Binária
