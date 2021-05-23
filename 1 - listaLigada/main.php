@@ -1,10 +1,13 @@
 <?php
-    require "./linkedList.php";
+    require_once './linkedList.php';
 
     // variaveis
-    $lista = new Lista();
+    $lista = new LinkedList();
+    $lista->insertEnd("Pedro", 21);
+    $lista->insertEnd("Eric", 15);
+    $lista->insertEnd("Geruza", 42);
 
-
+    
     // Programa
     while(1){
         $opcaoMenu = (int) menu();
@@ -26,7 +29,7 @@
     function titulo(){
         system("clear");
         print "----------------------------\n";
-        print "-------Lista Dinâmica-------\n";
+        print "-------Lista estática-------\n";
         print "----------------------------\n\n";
     }
 
@@ -35,7 +38,7 @@
         print "------------Menu------------\n";
         print "1 - Apagar lista;\n";
         print "2 - Quantidade de elementos;\n";
-        print "3 - Buscar dados por nome;\n";
+        print "3 - Buscar indice por nome;\n";
         print "4 - Inserir;\n";
         print "5 - Remover;\n";
         print "6 - Mostrar lista;\n";
@@ -51,47 +54,51 @@
         return $opcao;
     }
 
-    function apagaLista(Lista $list){
+    function apagaLista(LinkedList $list){
         system("clear");
         titulo();
-        $list->liberaLista();
+        $list->cleanList();
         print "A lista foi apagada! Tecle enter para continuar.";
         fgets(STDIN);
     }
 
-    function quantidadeDeElementos(Lista $list){
+    function quantidadeDeElementos(LinkedList $list){
         system("clear");
         titulo();
-        print "A lista contém " . $list->tamanhoLista() . " elementos.\n";
+        print "A lista contém " . $list->listLenght() . " elementos.\n";
         print "Tecle enter para continuar.\n";
         fgets(STDIN);
     }
 
-    function buscarIndicePorNome(Lista $list){
+    function buscarIndicePorNome(LinkedList $list){
         system("clear");
         titulo();
         print "Digite o nome: ";
         $nome = (string) fgets(STDIN);
-        $busca = $list->retornaDado($nome);
-        if($busca == null){
-            removeQuebraDeLinha($nome);
-            echo ("O nome ".$nome." não foi encontrado na lista\n");
+        removeLineBreak($nome);
+        $busca = $list->returnIndexByName($nome);
+        if($busca == false && !is_int($busca)){ //não encontrou ou está vazia
+            if($list->isEmpty()) //verifica se a lista está vazia
+                error_log("A lista está vazia");
+            else{
+                error_log($nome." não foi encontrado na lista");
+            }
+            print "Tecle enter para continuar.";
+            fgets(STDIN);
+            return false;
         }
-        else{
-            print "Nome: ".$busca->getNome()."\n";
-            print "Idade: ".$busca->getIdade()."\n";
-        }
+        print "O nome ".$nome." pertence ao índice: ".$busca."\n";
         print "Tecle enter para continuar.";
         fgets(STDIN);
     }
 
-    function menuInserir(Lista $list){
+    function menuInserir(LinkedList $list){
         while(1){
             titulo();
             print "------------Inserir------------\n";
             print "1 - Inserir no final da lista\n";
             print "2 - Inserir no inicio da lista\n";
-            print "3 - Inserir após um nome\n";
+            print "3 - Inserir após um nome ou em um indice\n";
             print "Digite a opção desejada: ";
             $opcaoInserir = (int) fgets(STDIN);
             if($opcaoInserir < 1 || $opcaoInserir > 3){
@@ -115,33 +122,47 @@
         fgets(STDIN);
     }
 
-    function inserirNoFinal(Lista $list, string $nome, int $idade){
+    function inserirNoFinal(LinkedList $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoFinal(new Pessoa($nome, $idade)) == false)
-            error_log("Erro ao inserir no final da lista.");
+        if($list->insertEnd($nome, $idade) == false)
+            error_log("Erro ao inserir no final da lista. A lista está cheia.");
     }
 
-    function inserirNoInicio(Lista $list, string $nome, int $idade){
+    function inserirNoInicio(LinkedList $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoInicio(new Pessoa($nome, $idade)) == false)
-            error_log("Erro ao inserir no inicio da lista.");
+        if($list->insertBeginning($nome, $idade) == false)
+            error_log("Erro ao inserir no inicio da lista. A lista está cheia.");
     }
 
-    function inserirAposNome(Lista $list, string $nome, int $idade){
+    function inserirAposNome(LinkedList $list, string $nome, int $idade){
         titulo();
         print "Digite o nome já existente na lista ou um indice: ";
-        $nomeExistente = fgets(STDIN);
-        $list->adicionaDepois(new Pessoa($nome, $idade), $nomeExistente);
+        $nomeIndiceExistente = fgets(STDIN);
+        if(is_int($nomeIndiceExistente)){
+            if($nomeIndiceExistente>$list->listLenght() || $nomeIndiceExistente<1)
+                error_log("Indice não pode ser maior que o tamanho da lista");
+            else
+                if($list->insertInIndex($nomeIndiceExistente, $nome, $idade) === false)
+                    error_log("Erro ao inserir no meio da lista. A lista está cheia ou indice inválido.");
+
+        }else{
+            $indexExistente = $list->returnIndexByName($nomeIndiceExistente);
+            if($indexExistente === false)
+                $list->insertEnd($nome, $idade);
+            else
+                if($list->insertInIndex($indexExistente, $nome, $idade) == false)
+                    error_log("Erro ao inserir no inicio da lista. A lista está cheia.");
+        }
     }
 
 
-    function menuRemove(Lista $list){
+    function menuRemove(LinkedList $list){
         while(1){
             titulo();
             print "------------Remover------------\n";
             print "1 - Remover no final da lista\n";
             print "2 - Remover no inicio da lista\n";
-            print "3 - Remover por nome\n";
+            print "3 - Remover por nome ou indice\n";
             print "Digite a opção desejada: ";
             $opcaoInserir = (int) fgets(STDIN);
             if($opcaoInserir < 1 || $opcaoInserir > 3){
@@ -160,49 +181,43 @@
         fgets(STDIN);
     }
 
-    function removeNoFinal(Lista $list){
+    function removeNoFinal(LinkedList $list){
         titulo();
-        $dadoRemovido = $list->removeNoFinal();
-        if($dadoRemovido == null)
-            error_log("Erro ao remover no final. Não há itens.");
-        else{
-            print "Dado removido: ";
-            print "Nome: ".$dadoRemovido->getNome();
-            print "Idade: ".$dadoRemovido->getIdade();
-        }
+        if($list->removeEnd() == false)
+            error_log("Erro ao remover no final! Lista vazia.");
     }
     
-    function removeNoInicio(Lista $list){
+    function removeNoInicio(LinkedList $list){
         titulo();
-        $dadoRemovido = $list->removeNoInicio();
-        if($dadoRemovido == null)
-            error_log("Erro ao remover no início. Não há itens.");
-        else{
-            print "Dado removido: ";
-            print "Nome: ".$dadoRemovido->getNome();
-            print "Idade: ".$dadoRemovido->getIdade();
-        }
+        if($list->removeBeginning() == false)
+            error_log("Erro ao remover no início! Lista vazia.");
     }
 
-    function removeNomeOuIndice(Lista $list){
+    function removeNomeOuIndice(LinkedList $list){
         titulo();
         print "Digite um nome ou um indice para remover: ";
-        $nome = fgets(STDIN);
-        $dadoRemovido = $list->removePeloNome($nome);
-        if($dadoRemovido == null)
-            error_log("Erro ao remover pelo nome. Nome não encontrado.");
-        else{
-            print "Dado removido: ";
-            print "Nome: ".$dadoRemovido->getNome();
-            print "Idade: ".$dadoRemovido->getIdade();
+        $nomeOuIndice = fgets(STDIN);
+        if(is_int($nomeOuIndice)){
+            if($list->removeIndex($nomeOuIndice) == false)
+                error_log("Erro ao remover o indice. Lista vazia ou indice inválido");
+        }else{
+            if($list->returnIndexByName($nomeOuIndice) == false && !is_int($list->returnIndexByName($nomeOuIndice))){
+                error_log("Erro ao remover pelo nome. Nome não encontrado.");
+            }
+            else
+                if($list->removeIndex($list->returnIndexByName($nomeOuIndice)) == false)
+                    error_log("Erro ao remover pelo nome. Lista vazia");
+            
+            print "Tecle enter para continuar.\n";
+            fgets(STDIN);
         }
     }
 
 
-    function mostrarLista(Lista $list){
+    function mostrarLista(LinkedList $list){
         system("clear");
         titulo();
-        if($list->printLista() == null)
+        if($list->printList() == false)
             print "Lista vazia.";
         echo "Tecle enter para continuar.";
         fgets(STDIN);
