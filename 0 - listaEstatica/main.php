@@ -1,8 +1,11 @@
 <?php
-    require 'lista.php';
+    require 'list.php';
 
     // variaveis
-    $lista = new Lista();
+    $lista = new StaticList();
+    $lista->insertBeginning("Pedro", 21);
+    $lista->insertBeginning("Eric", 15);
+    $lista->insertBeginning("Geruza", 42);
 
     
     // Programa
@@ -51,31 +54,31 @@
         return $opcao;
     }
 
-    function apagaLista(Lista $list){
+    function apagaLista(StaticList $list){
         system("clear");
         titulo();
-        $list->liberaLista();
+        $list->cleanList();
         print "A lista foi apagada! Tecle enter para continuar.";
         fgets(STDIN);
     }
 
-    function quantidadeDeElementos(Lista $list){
+    function quantidadeDeElementos(StaticList $list){
         system("clear");
         titulo();
-        print "A lista contém " . $list->quantidadeDeElementos() . " elementos.\n";
+        print "A lista contém " . $list->listLenght() . " elementos.\n";
         print "Tecle enter para continuar.\n";
         fgets(STDIN);
     }
 
-    function buscarIndicePorNome(Lista $list){
+    function buscarIndicePorNome(StaticList $list){
         system("clear");
         titulo();
         print "Digite o nome: ";
         $nome = (string) fgets(STDIN);
-        removeQuebraDeLinha($nome);
-        $busca = $list->retornaIndice($nome);
+        removeLineBreak($nome);
+        $busca = $list->returnIndexByName($nome);
         if($busca == false && !is_int($busca)){ //não encontrou ou está vazia
-            if($list->listaVazia()) //verifica se a lista está vazia
+            if($list->isEmpty()) //verifica se a lista está vazia
                 error_log("A lista está vazia");
             else{
                 error_log($nome." não foi encontrado na lista");
@@ -89,7 +92,7 @@
         fgets(STDIN);
     }
 
-    function menuInserir(Lista $list){
+    function menuInserir(StaticList $list){
         while(1){
             titulo();
             print "------------Inserir------------\n";
@@ -119,41 +122,41 @@
         fgets(STDIN);
     }
 
-    function inserirNoFinal(Lista $list, string $nome, int $idade){
+    function inserirNoFinal(StaticList $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoFinal($nome, $idade) == false)
+        if($list->insertEnd($nome, $idade) == false)
             error_log("Erro ao inserir no final da lista. A lista está cheia.");
     }
 
-    function inserirNoInicio(Lista $list, string $nome, int $idade){
+    function inserirNoInicio(StaticList $list, string $nome, int $idade){
         titulo();
-        if($list->adicionaNoInicio($nome, $idade) == false)
+        if($list->insertBeginning($nome, $idade) == false)
             error_log("Erro ao inserir no inicio da lista. A lista está cheia.");
     }
 
-    function inserirAposNome(Lista $list, string $nome, int $idade){
+    function inserirAposNome(StaticList $list, string $nome, int $idade){
         titulo();
         print "Digite o nome já existente na lista ou um indice: ";
         $nomeIndiceExistente = fgets(STDIN);
         if(is_int($nomeIndiceExistente)){
-            if($nomeIndiceExistente>$list->quantidadeDeElementos() || $nomeIndiceExistente<1)
+            if($nomeIndiceExistente>$list->listLenght() || $nomeIndiceExistente<1)
                 error_log("Indice não pode ser maior que o tamanho da lista");
             else
-                if($list->adicionaNoMeio($nomeIndiceExistente, $nome, $idade) == false)
+                if($list->insertAtIndex($nomeIndiceExistente, $nome, $idade) === false)
                     error_log("Erro ao inserir no meio da lista. A lista está cheia ou indice inválido.");
 
         }else{
-            $indexExistente = $list->retornaIndice($nomeIndiceExistente);
-            if($indexExistente == false)
-                $list->adicionaNoFinal($nome, $idade);
+            $indexExistente = $list->returnIndexByName($nomeIndiceExistente);
+            if($indexExistente === false)
+                $list->insertEnd($nome, $idade);
             else
-                if($list->adicionaNoMeio($indexExistente+1, $nome, $idade) == false)
+                if($list->insertAtIndex($indexExistente, $nome, $idade) == false)
                     error_log("Erro ao inserir no inicio da lista. A lista está cheia.");
         }
     }
 
 
-    function menuRemove(Lista $list){
+    function menuRemove(StaticList $list){
         while(1){
             titulo();
             print "------------Remover------------\n";
@@ -178,31 +181,31 @@
         fgets(STDIN);
     }
 
-    function removeNoFinal(Lista $list){
+    function removeNoFinal(StaticList $list){
         titulo();
-        if($list->removeFinal() == false)
+        if($list->removeEnd() == false)
             error_log("Erro ao remover no final! Lista vazia.");
     }
     
-    function removeNoInicio(Lista $list){
+    function removeNoInicio(StaticList $list){
         titulo();
-        if($list->removeInicio() == false)
+        if($list->removeBeginning() == false)
             error_log("Erro ao remover no início! Lista vazia.");
     }
 
-    function removeNomeOuIndice(Lista $list){
+    function removeNomeOuIndice(StaticList $list){
         titulo();
         print "Digite um nome ou um indice para remover: ";
         $nomeOuIndice = fgets(STDIN);
         if(is_int($nomeOuIndice)){
-            if($list->removeIndice($nomeOuIndice) == false)
+            if($list->removeIndex($nomeOuIndice) == false)
                 error_log("Erro ao remover o indice. Lista vazia ou indice inválido");
         }else{
-            if($list->retornaIndice($nomeOuIndice) == false && !is_int($list->retornaIndice($nomeOuIndice))){
+            if($list->returnIndexByName($nomeOuIndice) == false && !is_int($list->returnIndexByName($nomeOuIndice))){
                 error_log("Erro ao remover pelo nome. Nome não encontrado.");
             }
             else
-                if($list->removeIndice($list->retornaIndice($nomeOuIndice)) == false)
+                if($list->removeIndex($list->returnIndexByName($nomeOuIndice)) == false)
                     error_log("Erro ao remover pelo nome. Lista vazia");
             
             print "Tecle enter para continuar.\n";
@@ -211,10 +214,10 @@
     }
 
 
-    function mostrarLista(Lista $list){
+    function mostrarLista(StaticList $list){
         system("clear");
         titulo();
-        if($list->printLista() == false)
+        if($list->printList() == false)
             print "Lista vazia.";
         echo "Tecle enter para continuar.";
         fgets(STDIN);

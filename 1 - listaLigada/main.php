@@ -1,5 +1,5 @@
 <?php
-    require "./lista.php";
+    require "./linkedList.php";
 
     // variaveis
     $lista = new Lista();

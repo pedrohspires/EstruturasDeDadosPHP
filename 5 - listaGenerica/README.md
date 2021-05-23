@@ -31,7 +31,7 @@ Nessa imagem, podemos observar os elementos da lista genérica, como:
 Os códigos foram desenvolvidos na versão 8.0.3 do PHP. Não é necessário ser a versão exata, mas pode ocorrer alguns problemas com funções em versões muito anteriores</br>
 1. Com o PHP instalado, pelo terminal baixe com "git clone" o repositório na sua máquina (irá baixar todo o repositório, mas só será usada a pasta "listaEstatica";</br>
 2. Entre na pasta "listaEstatica";</br>
-`cd Estruturas_de_Dados_PHP/listaGenerica/`</br>
+`cd EstruturasDeDadosPHP/5\ -\ listaGenerica/`</br>
 3. Execute o arquivo "main.php"</br>
 `php main.php`</p>
 

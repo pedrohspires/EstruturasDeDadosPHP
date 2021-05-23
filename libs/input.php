@@ -1,5 +1,5 @@
 <?php
-    function removeQuebraDeLinha(string &$string){
+    function removeLineBreak(string &$string){
         if(!empty($string)){
             $cont = 0;
             while(1){
