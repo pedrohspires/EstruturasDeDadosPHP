@@ -91,7 +91,7 @@ function inserir(){
 function remover(){
     global $fila;
     titulo();
-    $dadoRemovido = $fila->pull();
+    $dadoRemovido = $fila->pop();
     if($dadoRemovido != null){
         echo "Pessoa removida:\n";
         echo "Nome: ".$dadoRemovido->getName()."\n";

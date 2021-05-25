@@ -67,7 +67,7 @@ class Queue{
 
 
     // Remove no início
-    public function pull(){
+    public function pop(){
         if(!$this->isEmpty()){
             $nodeTemp = $this->first;
             $this->first = $nodeTemp->next;
