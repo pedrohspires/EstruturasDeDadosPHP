@@ -1,8 +1,13 @@
 <?php
-    require "./pilha.php";
+    require_once './stack.php';
 
     // variaveis
-    $pilha = new Pilha();
+    $pilha = new Stack();
+    $pilha->push("Pedro", 21);
+    $pilha->push("Eric", 15);
+    $pilha->push("Geruza", 42);
+    $pilha->push("Eduardo", 44);
+    $pilha->push("Esmeralda", 21);
 
 
     // Programa
@@ -52,7 +57,7 @@
     function apagarPilha(){
         global $pilha;
         titulo();
-        if($pilha->liberaPilha() == null)
+        if($pilha->clean() == null)
             echo "Pilha vazia!";
         echo " Tecle enter para continuar.";
         fgets(STDIN);
@@ -61,7 +66,7 @@
     function quantidadeDeElementos(){
         global $pilha;
         titulo();
-        $qtd = $pilha->quantidadeDeElementos();
+        $qtd = $pilha->length();
         if($qtd != null)
             echo "Existe ".$qtd." elemento(s) na pilha.\n";
         else
@@ -77,7 +82,7 @@
         $nome = (string) fgets(STDIN);
         echo "Idade: ";
         $idade = (int) fgets(STDIN);
-        if($pilha->push(new Pessoa($nome, $idade)) != null)
+        if($pilha->push($nome, $idade) != null)
             echo "Sucesso ao inserir na pilha.";
         else
             echo "Erro ao inserir na pilha. Falta de memória.";
@@ -90,8 +95,8 @@
         $dadoRemovido = $pilha->pop();
         if($dadoRemovido != null){
             echo "Pessoa removida:\n";
-            echo "Nome: ".$dadoRemovido->getNome()."\n";
-            echo "Idade: ".$dadoRemovido->getIdade()."\n";
+            echo "Nome: ".$dadoRemovido->getName()."\n";
+            echo "Idade: ".$dadoRemovido->getAge()."\n";
         }else
             echo "Pilha está vazia. ";
         echo "Tecle enter para continuar.";
@@ -107,7 +112,7 @@
     function mostrarPilha(){
         global $pilha;
         titulo();
-        if($pilha->printPilha('printDado') == null)
+        if($pilha->printStack() == null)
             echo "Pilha está vazia.";
         echo "Tecle enter para continuar.";
         fgets(STDIN);
